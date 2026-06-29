@@ -6,10 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.geometry.Insets;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 
 public class App extends Application{
     public static void main(String[] args) {
@@ -25,7 +26,7 @@ TextArea nedText = new TextArea("Welcome back. Chlorine levels stable.");
 
 TextField inputField = new TextField();
 inputField.setStyle(
-    "-fx-background-color: #000000; " +   // Macht den weissen Kasten unsichtbar
+    "-fx-background-color: #121212; " +   // Macht den weissen Kasten unsichtbar
     "-fx-text-fill: #FCE300; " +              // Gleiches Gelb wie bei Neds Text
     "-fx-font-family: 'Courier New'; " +      // Gleiche Hacker-Schriftart
     "-fx-font-size: 20px; " +                 // Gleiche Grösse
@@ -39,12 +40,15 @@ Integer CanvasWidth = 1000;
 Integer CanvasHeight = 600;
 
 
-nedText.setStyle( "-fx-control-inner-background: #121212; " +   // Macht den weissen Kasten unsichtbar
-    "-fx-text-fill: #FCE300; " +              // Gleiches Gelb wie bei Neds Text
-    "-fx-font-family: 'Courier New'; " +      // Gleiche Hacker-Schriftart
-    "-fx-font-size: 20px; " +                 // Gleiche Grösse
-    "-fx-padding: 0; " +
-    "-fx-focus-color: #FCE300; -fx-faint-focus-color: #FCE300;" +
+nedText.setStyle( 
+    "-fx-control-inner-background: #121212; " + 
+    "-fx-background-color: transparent; " +     // Nuke den Hintergrund
+    "-fx-box-border: transparent; " +
+    " -fx-faint-focus-color: transparent;"  +         // Nuke den Rahmen
+    "-fx-text-fill: #FCE300; " +              
+    "-fx-font-family: 'Courier New'; " +      
+    "-fx-font-size: 20px; " +                 
+    "-fx-padding: 10px 0px 0px 0px; " +         // Ein bisschen Platz nach oben zum Gesicht
     "-fx-font-weight: bold;"
 );
 
@@ -54,10 +58,14 @@ nedText.setFocusTraversable(false);
 nedFace.setStyle("-fx-text-fill: #FCE300; -fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-font-weight: bold;");
 
       
-        VBox root = new VBox(nedFace, nedText, inputField);        
+        BorderPane root = new BorderPane();      
         root.setStyle("-fx-background-color: #121212;");
-        root.setAlignment(Pos.BOTTOM_LEFT); 
         root.setPadding(new Insets(30));
+        root.setTop(nedFace);
+        root.setCenter(nedText);
+        root.setBottom(inputField);
+        BorderPane.setAlignment(nedFace, Pos.CENTER);
+        
 
      
         Scene scene = new Scene(root, CanvasWidth, CanvasHeight );
