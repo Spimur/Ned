@@ -130,6 +130,7 @@ nedText.setFocusTraversable(false);
 
      
         Scene scene = new Scene(root, CanvasWidth, CanvasHeight );
+        System.out.println("ausgdhjgfhjagsdjads");
         scene.setOnMouseClicked(event -> inputField.requestFocus());
         nedText.setOnMouseClicked(event -> inputField.requestFocus());
 
@@ -241,5 +242,14 @@ nedText.lookup(".content").setStyle("-fx-background-color: transparent;");
    
 
 }
+
+// aishgdjagdhagfkgahdafa
+// aishgdjagdhagfkgahdafa
+// aishgdjagdhagfkgahdafa
+// aishgdjagdhagfkgahdafa
+// aishgdjagdhagfkgahdafa
+
+
+
 
 
