@@ -101,14 +101,14 @@ nedText.setStyle(
     "-fx-font-weight: bold;"
 );
 
-nedFace.setStyle("-fx-text-fill: #FCE300; -fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-font-weight: bold;");
+nedFace.setStyle("-fx-text-fill: #FCE300; -fx-font-family: 'Courier New'; -fx-font-size: 30px; -fx-font-weight: bold;");
 
 
 
 Integer CanvasWidth = 1000;
 Integer CanvasHeight = 600;
 String baseTextAreaStyle = "-fx-control-inner-background: #121212; -fx-background-color: #121212; -fx-background-radius: 0; -fx-box-border: transparent; -fx-padding: 10px 0 0 0; -fx-background-insets: 0; -fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: ";
-String baseNedFaceStyle = "-fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: ";
+String baseNedFaceStyle = "-fx-font-family: 'Courier New'; -fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: ";
 String baseInputFieldStyle = "-fx-control-inner-background: #121212; -fx-background-color: #121212; -fx-background-radius: 0; -fx-box-border: transparent; -fx-faint-focus-color: transparent; -fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-padding: 10px 0px 0px 0px; -fx-background-insets: 0; -fx-font-weight: bold; -fx-text-fill: ";
 
 
@@ -130,7 +130,6 @@ nedText.setFocusTraversable(false);
 
      
         Scene scene = new Scene(root, CanvasWidth, CanvasHeight );
-        System.out.println("ausgdhjgfhjagsdjads");
         scene.setOnMouseClicked(event -> inputField.requestFocus());
         nedText.setOnMouseClicked(event -> inputField.requestFocus());
 
@@ -242,14 +241,4 @@ nedText.lookup(".content").setStyle("-fx-background-color: transparent;");
    
 
 }
-
-// aishgdjagdhagfkgahdafa
-// aishgdjagdhagfkgahdafa
-// aishgdjagdhagfkgahdafa
-// aishgdjagdhagfkgahdafa
-// aishgdjagdhagfkgahdafa
-
-
-
-
 
