@@ -14,7 +14,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.concurrent.CompletableFuture;
+import java.util.Random;
 import javafx.application.Platform;
 
 public class App extends Application{
@@ -110,6 +110,20 @@ Integer CanvasHeight = 600;
 String baseTextAreaStyle = "-fx-control-inner-background: #121212; -fx-background-color: #121212; -fx-background-radius: 0; -fx-box-border: transparent; -fx-padding: 10px 0 0 0; -fx-background-insets: 0; -fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: ";
 String baseNedFaceStyle = "-fx-font-family: 'Courier New'; -fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: ";
 String baseInputFieldStyle = "-fx-control-inner-background: #121212; -fx-background-color: #121212; -fx-background-radius: 0; -fx-box-border: transparent; -fx-faint-focus-color: transparent; -fx-font-family: 'Courier New'; -fx-font-size: 20px; -fx-padding: 10px 0px 0px 0px; -fx-background-insets: 0; -fx-font-weight: bold; -fx-text-fill: ";
+String[] nedQuotes = {
+    "Ned: *Sips chlorine* 'In Trench I'm not alone.'",
+    "Ned: 'The sun will rise and we will try again.'",
+    "Ned is grooving to the bassline.",
+    "Ned: 'Peace will win and fear will lose.'",
+    "Ned: 'Push on through!'",
+    "Ned: 'don't just sit in silence.'",
+    "Ned: 'Fight it, take the pain, ignite it'",
+    "Ned: 'We've made it to another day, my friends'"
+};
+Random random = new Random();
+
+
+
 
 
 
@@ -229,7 +243,20 @@ nedText.lookup(".content").setStyle("-fx-background-color: transparent;");
 
                 fetchLyrics(songName, nedText);
 
-            } else {
+            }else if (command.equalsIgnoreCase("ned vibe check")){
+                
+                int randomIndex = random.nextInt(nedQuotes.length);
+                String chosenQuote = nedQuotes[randomIndex];
+                
+                nedText.appendText(chosenQuote);
+            
+
+
+            }
+            
+            
+            
+            else {
                 nedText.appendText("Ned is confused. Unknown command: " + command);
             }
         
