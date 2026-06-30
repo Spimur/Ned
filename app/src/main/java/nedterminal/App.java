@@ -118,7 +118,8 @@ String[] nedQuotes = {
     "Ned: 'Push on through!'",
     "Ned: 'don't just sit in silence.'",
     "Ned: 'Fight it, take the pain, ignite it'",
-    "Ned: 'We've made it to another day, my friends'"
+    "Ned: 'We've made it to another day, my friends'",
+    "Ned: 'Power to the local dreamer'"
 };
 Random random = new Random();
 
