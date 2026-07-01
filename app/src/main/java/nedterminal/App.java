@@ -16,6 +16,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Random;
 import javafx.application.Platform;
+import java.util.HashMap;
+import java.util.Map;
 
 public class App extends Application{
     public static void main(String[] args) {
@@ -125,11 +127,41 @@ Random random = new Random();
 
 
 
+Map<String, String> demaFiles = new HashMap<>();
+// Hier kannst du das Lexikon mit put("stichwort", "text") füllen:
+// --- CHARAKTERE ---
+demaFiles.put("clancy", "FILE 01: Clancy. STATUS: ALIVE. The exception. The weapon. Writer of the letters and protagonist of the rebellion.");
+demaFiles.put("nico", "FILE 02: Nicolas Bourbaki (Blurryface). STATUS: ALIVE. Leader of the Nine Bishops. Represents ultimate fear, depression, and control.");
+demaFiles.put("torchbearer", "FILE 03: The Torchbearer. STATUS: ALIVE. Leader of the Banditos. Acts as a guide for Clancy. He will provide the yellow tape.");
+demaFiles.put("keons", "FILE 04: Keons. STATUS: DECEASED. Former Bishop of Dema. Known to be compassionate. Betrayed Nico to help Clancy escape. Killed by the other Bishops.");
+demaFiles.put("trash", "FILE 05: Trash the Dragon. Origin: Scaled and Icy. Represents imagination and rebellion. Briefly possessed by Keons via Psychokinesis to destroy the submarine.");
+demaFiles.put("ned", "FILE 06: Ned (Neural Expansion Device). STATUS: ALIVE. Small creature from Voldsøy. Provides psychokinetic abilities through its antlers. Represents pure creativity.");
+
+// --- DIE RESTLICHEN BISCHÖFE (Nico & Keons sind oben) ---
+demaFiles.put("andre", "BISHOP FILE: Andre. Represents the fear of staying the same. Linked to 'Fairly Local'.");
+demaFiles.put("lisden", "BISHOP FILE: Lisden. Represents anxiety. Linked to 'Polarize'.");
+demaFiles.put("reisdro", "BISHOP FILE: Reisdro. Represents self-doubt. Linked to 'Doubt'.");
+demaFiles.put("sacarver", "BISHOP FILE: Sacarver. Represents the fear of losing a loved one. Linked to 'Tear In My Heart'.");
+demaFiles.put("nills", "BISHOP FILE: Nills. Represents the fear of defeat. Linked to 'Goner'.");
+demaFiles.put("vetomo", "BISHOP FILE: Vetomo. Represents the fear of change. Linked to 'Lane Boy'.");
+demaFiles.put("listo", "BISHOP FILE: Listo. Represents the fear of abandonment. Linked to 'Ride'.");
+
+// --- ORTE & FRAKTIONEN ---
+demaFiles.put("dema", "LOCATION: Dema. A circular, walled city ruled by the Nine Bishops. Represents a dark, oppressive state of mind. Home to the religion of Vialism.");
+demaFiles.put("voldsoy", "LOCATION: Voldsøy. An island separated from Dema by the Paladin Strait. Home to the Neds and a place of refuge for the Banditos.");
+demaFiles.put("banditos", "FACTION: The Banditos. STATUS: ACTIVE. A rebel group fighting against Dema. They wear yellow, a color the Bishops cannot see.");
+demaFiles.put("vialism", "BELIEF: Vialism. The false religion enforced by the Bishops in Dema. Preaches that ending one's own life is the only path to paradise.");
+demaFiles.put("glorious gone", "FILE: The Glorious Gone. Those who have given into Vialism. Their bodies act as 'vessels' that the Bishops can seize using psychokinesis.");
+
+
+
+
 
 
 
 nedText.setEditable(false);
 nedText.setFocusTraversable(false);
+nedText.setWrapText(true);
 
 
 
@@ -253,15 +285,28 @@ nedText.lookup(".content").setStyle("-fx-background-color: transparent;");
             
 
 
-            }
+            } else if (command.toLowerCase().startsWith("whois ")) {
+                    String subject = command.substring(6).trim().toLowerCase();
+
+                    if (demaFiles.containsKey(subject)) {
+                        
+                    nedText.appendText("\n[ACCESSING DEMA ARCHIVES...]\n");
+                    javafx.animation.PauseTransition delay = new javafx.animation.PauseTransition(javafx.util.Duration.seconds(1.5));
+
+
+                    delay.setOnFinished(e -> nedText.appendText(demaFiles.get(subject) + "\n"));
+                    delay.play();
+                
+                } else {
+                    nedText.appendText("\n[ERROR] Subject '" + subject + "' not found in Dema databases.\n");
+                        }
             
             
-            
-            else {
+            } else {
                 nedText.appendText("Ned is confused. Unknown command: " + command);
-            }
-        
-            inputField.clear();
+                }
+            
+                inputField.clear();
             
         });
     }
